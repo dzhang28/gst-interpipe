@@ -428,6 +428,11 @@ gst_inter_pipe_sink_get_caps (GstBaseSink * base, GstCaps * filter)
     goto nolisteners;
   }
 
+  if (sink->caps_negotiated) {
+    gst_caps_unref (sink->caps_negotiated);
+    sink->caps_negotiated = NULL;
+  }
+
   /* Find the intersection of all the listeners */
   g_hash_table_foreach (listeners, gst_inter_pipe_sink_intersect_listener_caps,
       sink);
