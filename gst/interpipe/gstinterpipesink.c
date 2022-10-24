@@ -450,6 +450,8 @@ gst_inter_pipe_sink_get_caps (GstBaseSink * base, GstCaps * filter)
       gst_inter_pipe_sink_caps_intersect (pre_filter, filter);
   gst_caps_unref (pre_filter);
 
+  GST_INFO_OBJECT (sink, "Caps filter from upstream: %" GST_PTR_FORMAT,
+      filter);
   GST_INFO_OBJECT (sink, "Caps negotiated: %" GST_PTR_FORMAT,
       sink->caps_negotiated);
 
