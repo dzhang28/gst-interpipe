@@ -774,8 +774,10 @@ gst_inter_pipe_sink_add_listener (GstInterPipeINode * iface,
     /* If src has no caps, set it to caps from sink pad */
     GstEvent *capsev = gst_pad_get_sticky_event (GST_INTER_PIPE_SINK_PAD (sink),
         GST_EVENT_CAPS, 0);
+
     if (capsev) {
       GstCaps *caps;
+
       gst_event_parse_caps (capsev, &caps);
       GST_INFO_OBJECT (sink, "Setting listener caps to %" GST_PTR_FORMAT, caps);
       gst_inter_pipe_ilistener_set_caps (listener, caps);
